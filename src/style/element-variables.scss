@@ -1,0 +1,56 @@
+/* 改变主题色变量 */
+// https://github.com/PanJiaChen/custom-element-theme/blob/master/element-variables.scss#L477可在上面查找相关配置修改颜色
+
+/* Colors
+-------------------------- */
+$--color-white: #fff !default;
+$--color-black: #000 !default;
+
+//$--color-primary: #008CD6;
+$--color-primary: #2395ff !default;
+$--color-success: #12ce66 !default;
+$--color-warning: #ff9a0d !default;
+$--color-danger: #ff4949 !default;
+$--color-info: #909399 !default;
+
+$--color-text-primary: #17233d !default;
+$--color-text-regular: #606266 !default;
+$--color-text-secondary: #909399 !default;
+$--color-text-placeholder: #c0c4cc !default;
+
+/* Background
+-------------------------- */
+$--background-color-base: #f5f7fa !default;
+
+/* Border
+-------------------------- */
+$--border-color-base: #bbb !default;
+$--border-color-lighter: #ddd !default;
+
+/* Disable base
+-------------------------- */
+$--disabled-fill-base: #e5e5e5 !default;
+$--disabled-color-base: #666 !default;
+$--disabled-border-base: #bbb !default;
+
+/* Radio
+-------------------------- */
+$--radio-disabled-checked-input-fill: $--color-primary !default;
+$--radio-disabled-checked-input-border-color: $--color-primary !default;
+$--radio-disabled-checked-icon-color: $--color-white !default;
+
+/* Checkbox
+-------------------------- */
+$--checkbox-disabled-checked-input-fill: $--color-primary !default;
+$--checkbox-disabled-checked-input-border-color: $--color-primary !default;
+$--checkbox-disabled-checked-icon-color: $--color-white !default;
+
+/* Table
+-------------------------- */
+$--table-border-color: $--border-color-lighter !default;
+$--table-row-hover-background: $--table-border-color!default;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

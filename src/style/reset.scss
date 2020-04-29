@@ -1,0 +1,205 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //去除点击高亮
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none; //iOS下禁用系统默认菜单
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%; //防止iPhone在坚屏转向横屏时放大文字
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a img {
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #2395ff;
+}
+
+ul {
+  list-style: none;
+}
+
+// Forms
+// ==========================================================================
+
+input,
+textarea {
+  -webkit-user-select: text;
+
+  -webkit-appearance: none; //去除默认样式
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit; // 2
+  color: inherit; // 1
+}
+
+button:focus,
+input:focus {
+  outline: 0;
+}
+
+// Tables
+// ==========================================================================
+
+//
+// Remove most spacing between table cells.
+//
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+textarea,
+p,
+blockquote,
+th,
+td,
+input,
+select,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset,
+img {
+  border: 0 none;
+}
+
+dl,
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+input,
+textarea,
+select,
+button {
+  vertical-align: middle;
+  outline: medium;
+}
+
+button {
+  border: 0 none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+body {
+  font-size: 13px;
+}
+
+body,
+th,
+td,
+input,
+select,
+textarea,
+button {
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+img {
+  border: none;
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-size: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
