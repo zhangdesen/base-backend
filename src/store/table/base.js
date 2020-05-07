@@ -98,13 +98,13 @@ const base = {
     // 解析加载的表格数据
     parseResponse (state, payload) {
       const {data, formNamespace} = payload
-      const newState = setBaseState(state, formNamespace)
-      newState.loading = false
-      newState.tableDataSource = data.results || data
-      newState.loadDataParams.totalPage = data.count
-      newState.selectionAllIds = newState.selectionAllList.map(row => {
+      let newState = setBaseState(state, formNamespace)
+      Vue.set(newState, 'loading', false)
+      Vue.set(newState, 'tableDataSource', data.results || data)
+      Vue.set(newState.loadDataParams, 'count', data.count)
+      Vue.set(newState, 'selectionAllIds', newState.selectionAllList.map(row => {
         return row[newState.rowKey]
-      })
+      }))
     },
     // 搜索默认设置
     setSearchDefaultValue (state, searchFields) {
@@ -119,7 +119,7 @@ const base = {
     // 表格多选
     handleSelectionChange (state, obj) {
       let { selection, formNamespace, type } = obj
-      const newState = setBaseState(state, formNamespace)
+      let newState = setBaseState(state, formNamespace)
       if (type === 'rowClick') {
         let index
         let selectionAllList = newState.selectionAllList
@@ -174,21 +174,21 @@ const base = {
     // 表格单选
     handleRadioChange (state, data) {
       const { radioData, formNamespace } = data
-      const newState = setBaseState(state, formNamespace)
+      let newState = setBaseState(state, formNamespace)
       newState.radioData = radioData
       newState.radioId = radioData[newState.rowKey]
     },
     // input输入框
     changeInput (state, obj) {
       const { key, value } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       Vue.set(newState, key, value.trim())
       // state.searchObject = {...state.searchObject, [key]: value}
     },
     // 级联框
     changeCascader (state, obj) {
       const { key, value, field } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       Vue.set(newState, key, value)
       // 兼容后端级联只要最后一个值
       if (field) {
@@ -198,7 +198,7 @@ const base = {
     // 日期框
     changeDate (state, obj) {
       const { key, value, firstDate, lastDate } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       if (value) {
         if (firstDate) {
           Vue.set(newState, key, [initDate(value[0]), initDate(value[1])])
@@ -216,7 +216,7 @@ const base = {
     // 选择框
     changeSelect (state, obj) {
       const { key, value, multiple, field } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       Vue.set(newState, key, value)
       if (multiple && field) {
         Vue.set(newState, field, value && value.length ? value.join(',') : void 0) // 后端的数组需要转成‘，’分割，但是elmentui的展示需要是数组格式
@@ -225,25 +225,25 @@ const base = {
     // switch选择
     changeSwitch (state, obj) {
       const { key, value } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       Vue.set(newState, key, value)
     },
     // 单选框
     changeRadio (state, obj) {
       const { key, value } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       Vue.set(newState, key, value)
     },
     // 多选框
     changeCheckbox (state, obj) {
       const { key, value } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       Vue.set(newState, key, value)
     },
     // 树形结构
     changeTree (state, obj) {
       const { key, value } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       Vue.set(newState, key, value)
     },
     // 动态设置表格高度
@@ -294,7 +294,7 @@ const base = {
     },
     // 设置表单检验规则
     handleOpen (state, obj) {
-      const newState = setFormState(state, obj)
+      let newState = setFormState(state, obj)
       const { formFields } = obj
       formFields.forEach((item) => {
         // 递归调用
@@ -309,7 +309,7 @@ const base = {
     },
     // 新增
     createForm (state, formNamespace = FORM) {
-      const newState = setFormState(state, formNamespace)
+      let newState = setFormState(state, formNamespace)
       newState.editType = 'create'
       newState.dialogTitle = '新增'
       newState.ruleForm = {}
@@ -317,7 +317,7 @@ const base = {
     },
     // 编辑
     editTable (state, payload) {
-      const newState = setFormState(state, payload)
+      let newState = setFormState(state, payload)
       newState.editType = 'edit'
       newState.dialogTitle = payload.title || '编辑'
       newState.ruleForm = JSON.parse(JSON.stringify(payload.row))
@@ -325,7 +325,7 @@ const base = {
     },
     // 查看
     seeTable (state, payload) {
-      const newState = setFormState(state, payload)
+      let newState = setFormState(state, payload)
       newState.editType = 'see'
       newState.dialogTitle = payload.title || '查看'
       newState.ruleForm = JSON.parse(JSON.stringify(payload.row))
@@ -333,17 +333,17 @@ const base = {
     },
     // 关闭弹窗前
     beforeClose (state, formNamespace = FORM) {
-      const newState = setFormState(state, formNamespace)
+      let newState = setFormState(state, formNamespace)
       newState.dialogVisible = false
     },
     // x关闭
     closeDialog (state, formNamespace = FORM) {
-      const newState = setFormState(state, formNamespace)
+      let newState = setFormState(state, formNamespace)
       newState.dialogVisible = false
     },
     // 关闭后
     afterClose (state, formNamespace = FORM) {
-      const newState = setFormState(state, formNamespace)
+      let newState = setFormState(state, formNamespace)
       newState.editType = ''
       // 判断数组防止关闭弹窗报错
       Object.keys(newState.ruleForm).forEach((key) => {
@@ -370,6 +370,8 @@ const base = {
         }
       })
       // 防止出现表格，手动重置
+      Vue.set(newState.loadDataParams, 'pageNo', 1)
+      Vue.set(newState.loadDataParams, 'count', 0)
       newState.selectionAllList = []
       newState.selectionAllIds = []
       newState.selectionDisabledIds = []
@@ -418,7 +420,7 @@ const base = {
     },
     async loadData ({ commit, state }, param = {}) {
       const { formNamespace } = param
-      const newState = setBaseState(state, param)
+      let newState = setBaseState(state, param)
       newState.loading = true
       const params = Object.assign(newState.loadDataParams, param, newState.filters)
       const {data} = await makeApi[newState.baseUrl]({ params })
@@ -428,12 +430,12 @@ const base = {
       await dispatch('loadData', {pageNo: 1, formNamespace})
     },
     async handleSearchConfirm ({state, dispatch}, formNamespace) {
-      const newState = setBaseState(state, formNamespace)
+      let newState = setBaseState(state, formNamespace)
       newState.loadDataParams = {pageNo: 1}
       await dispatch('loadData', {...newState.searchObject, formNamespace})
     },
     async handleRefresh ({state, dispatch}, formNamespace) {
-      const newState = setBaseState(state, formNamespace)
+      let newState = setBaseState(state, formNamespace)
       Object.keys(newState.searchObject).forEach((key) => {
         if (Array.isArray(newState.searchObject[key])) {
           newState.searchObject[key] = [] // 为了支持elementui多选等必须要数组格式
@@ -455,7 +457,7 @@ const base = {
     },
     async handleSizeChange ({dispatch, state}, obj) {
       const {size, formNamespace} = obj
-      const newState = setBaseState(state, formNamespace)
+      let newState = setBaseState(state, formNamespace)
       newState.filters.pageSize = size
       await dispatch('loadData', {
         pageNo: 1,
@@ -467,7 +469,7 @@ const base = {
     },
     async handleSortChange ({state, dispatch}, obj) {
       const {prop, order, formNamespace} = obj
-      const newState = setBaseState(state, formNamespace)
+      let newState = setBaseState(state, formNamespace)
       if (!prop) return
       newState.filters.sort = prop
       order === 'ascending' ? newState.filters.order = 'asc' : newState.filters.order = 'desc'
@@ -479,7 +481,7 @@ const base = {
     },
     async handleSwitch ({state, dispatch}, data) {
       const { name, status, ajaxData, formNamespace } = data
-      const newState = setBaseState(state, formNamespace)
+      let newState = setBaseState(state, formNamespace)
       MessageBox({
         title: '提示',
         message: `是否将<span style="color: #f04848">${name}</span>修改为${status}状态`,
@@ -497,7 +499,7 @@ const base = {
     },
     async handleConfirm ({state, dispatch}, data) {
       const { title, formNamespace, ajaxData } = data
-      const newState = setBaseState(state, formNamespace)
+      let newState = setBaseState(state, formNamespace)
       MessageBox({
         title: '提示',
         message: title || '是否执行此操作',
@@ -526,7 +528,7 @@ const base = {
     },
     async picUpload ({state}, obj) {
       const { key, value } = obj
-      const newState = setUpdateObj(state, obj)
+      let newState = setUpdateObj(state, obj)
       let fd = new FormData()
       fd.append('file', value)
       const {data} = await makeApi[state.uploadUrl || 'COMMON_FILEUPLOAD']({ data: fd })
@@ -536,20 +538,20 @@ const base = {
       await dispatch('formConfirmRequest', {formNamespace})
     },
     async formConfirmRequest ({state, dispatch}, payload) {
-      const data = setFormState(state, payload.formNamespace)
-      const url = data.editType === 'create' ? data.createUrl : data.editUrl
-      const {message} = await makeApi[url]({ data: payload.ajaxData || data.ruleForm })
+      let newState = setFormState(state, payload.formNamespace)
+      const url = newState.editType === 'create' ? newState.createUrl : newState.editUrl
+      const {message} = await makeApi[url]({ data: payload.ajaxData || newState.ruleForm })
       Message.success(message)
       await dispatch('loadData')
-      data.dialogVisible = false
+      newState.dialogVisible = false
     },
     async complexFormConfirm ({dispatch}, obj) {
       await dispatch('complexFormConfirmRequest', obj)
     },
     async complexFormConfirmRequest ({state, commit}, payload) {
-      const data = setFormState(state, payload.formNamespace)
-      const url = data.editType === 'create' ? data.createUrl : data.editUrl
-      const {message} = await makeApi[url]({ data: payload.ajaxData || data.ruleForm })
+      let newState = setFormState(state, payload.formNamespace)
+      const url = newState.editType === 'create' ? newState.createUrl : newState.editUrl
+      const {message} = await makeApi[url]({ data: payload.ajaxData || newState.ruleForm })
       Message.success(message)
       this.commit('tabRemove', {path: payload.fullPath}, {root: true})
       commit('updateParent', payload)

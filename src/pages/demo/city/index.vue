@@ -18,6 +18,7 @@ import firstFields from './firstFields'
 import secondFields from './secondFields'
 import store from './store'
 import registerModule from '@/mixins/registerModule'
+import { changeField } from '@/utils/fun'
 
 export default {
   name: 'City',
@@ -44,6 +45,7 @@ export default {
     this.initSource()
     this.loadFirstPage()
     this.querySearch(this.searchFields)
+    changeField(this.searchFields, 'name', 'disabled', true)
   },
   watch: {
     'ruleForm.parentAdcode' (newValue) {

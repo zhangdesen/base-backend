@@ -9,7 +9,7 @@
       :page-size="loadDataParams.pageSize || 25"
       background
       layout="total, sizes, prev, pager, next, jumper"
-      :total="loadDataParams.totalPage || 0"
+      :total="loadDataParams.count || 0"
       :small="small"
       :pager-count="5"
     >

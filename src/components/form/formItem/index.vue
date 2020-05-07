@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <div class="form-item" v-for="item in formFields" :key="item.prop" :style="{maxHeight: maxHeight}">
+  <div class="form-item" :style="{maxHeight: maxHeight}">
+    <template v-for="item in formFields">
       <el-form-item
         size="medium"
+        :key="item.prop"
         v-if="item.show !== false ? (editType === 'edit' ? item.editShow !== false : editType === 'see' ? item.seeShow !== false : editType === 'create' ? item.createShow !== false : true) : false"
         :prop="item.prop"
         :label-width="item.label ? labelWidth : '0px'"
@@ -177,7 +178,7 @@
         </div>
       </slot>
     </el-form-item>
-  </div>
+  </template>
 </div>
 </template>
 

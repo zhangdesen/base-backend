@@ -41,7 +41,21 @@ export function MergeRecursive (obj1, obj2) {
   return obj
 }
 
-export const initDate = function (value, format = 'YYYY-MM-DD HH:mm:ss') {
+export function initDate (value, format = 'YYYY-MM-DD HH:mm:ss') {
   if (!value) return ''
   return moment(value).format(format)
+}
+
+export function changeField (fields, key, type, value) {
+  if (!Array.isArray(fields)) return console.error('数据源格式不正确')
+  for (let i = 0, len = fields.length; i < len; i++) {
+    let item = fields[i]
+    if (item.children) {
+      return changeField(item.children, key, type, value)
+    }
+    if (item.prop === key) {
+      item[type] = value
+      break
+    }
+  }
 }
