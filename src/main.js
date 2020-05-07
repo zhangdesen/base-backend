@@ -17,6 +17,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import './style/element-ui.scss'
+import './style/element-variables.scss'
 
 (async () => {
   plugins.install(Vue) // 安装全局函数

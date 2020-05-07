@@ -21,4 +21,7 @@ export default {
   height: 100%;
   min-width: 720px
 }
+body .el-table th.gutter {
+  display: table-cell !important;
+}
 </style>

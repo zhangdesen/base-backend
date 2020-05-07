@@ -38,7 +38,7 @@
           <el-radio
             style="margin-left: 8px"
             :label="scope.row.id"
-            v-model="radioId"
+            :value="radioId"
             @change.native="handleRadioChange(scope.row)"
             :disabled="editType === 'see'"
             >&nbsp;</el-radio

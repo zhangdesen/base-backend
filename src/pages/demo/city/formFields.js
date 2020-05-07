@@ -56,6 +56,7 @@ const dataFields = [
     height: '260px',
     width: '520px',
     showAction: false,
+    showRadio: true,
     searchFields: [
       {
         prop: 'name',
