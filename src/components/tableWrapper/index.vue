@@ -100,8 +100,7 @@ export default {
       type: Array,
       default () {
         return []
-      },
-      required: true
+      }
     },
     namespace: {
       type: String,

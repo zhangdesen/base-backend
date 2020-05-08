@@ -41,8 +41,7 @@
             :value="radioId"
             @change.native="handleRadioChange(scope.row)"
             :disabled="editType === 'see'"
-            >&nbsp;</el-radio
-          >
+            >&nbsp;</el-radio>
         </template>
       </el-table-column>
 
