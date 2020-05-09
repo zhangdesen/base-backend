@@ -1,7 +1,7 @@
 // 表格基础头部数据
 import user from '../components/user'
 
-const th = [
+export const th = [
   {
     prop: 'createBy',
     label: '创建人',
@@ -45,5 +45,3 @@ const th = [
     }
   }
 ]
-
-export default th

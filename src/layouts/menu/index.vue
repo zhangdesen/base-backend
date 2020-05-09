@@ -144,13 +144,7 @@ export default {
     handleMenuIcon (type) {
       switch (type) {
         case 'user':
-          this.$router.push({
-            path: '/iframe',
-            query: {
-              title: '个人资料',
-              url: process.env.URL_LIST.user
-            }
-          })
+          this.$router.push({path: '/resetPassword'})
           break
         case 'notice':
           this.$router.push({

@@ -1,4 +1,4 @@
-const { mock } = process.env.API_HOST_LIST
+const { mock, base } = process.env.API_HOST_LIST
 
 const common = [
   {
@@ -27,6 +27,12 @@ const common = [
     headers: {
       'Content-Type': 'multipart/form-data'
     }
+  },
+  {
+    name: 'ACCOUNT_PASSWORD_UPDATE',
+    url: `${base}/account/password/update`,
+    method: 'POST',
+    withCredentials: true
   }
 ]
 

@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 // 单个时间选择器选择最近时间
-const pickerOptions = {
+export const pickerOptions = {
   shortcuts: [
     {
       text: '昨日',
@@ -85,5 +85,3 @@ const pickerOptions = {
     }
   ]
 }
-
-export default pickerOptions

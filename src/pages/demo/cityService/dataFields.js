@@ -1,4 +1,4 @@
-import {th} from '@/config'
+import {th} from '@/config/th'
 
 const dataFields = [
 

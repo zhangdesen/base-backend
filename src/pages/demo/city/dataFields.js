@@ -1,7 +1,7 @@
 /**
  * Created by zds on 2018/12/18.
  */
-import { th } from '@/config'
+import { th } from '@/config/th'
 
 const dataFields = [
   {

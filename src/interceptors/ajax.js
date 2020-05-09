@@ -58,7 +58,7 @@ export function responseSuccessFunc (responseObj) {
         message = data.join('，')
       }
       Message.error(message)
-      break
+      return Promise.reject(new Error('error conde'))
     default:
       return resData
   }

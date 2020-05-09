@@ -29,6 +29,9 @@ export const idCardTest = {validator: idCard, trigger: 'blur'}
 // money验证
 export const moneyValidate = {validator: money, type: 'integer', transform: value => value ? +(value) : void 0, trigger: ['blur', 'change']}
 
+// 密码校验
+export const passwordValidate = {validator: password, trigger: 'blur'}
+
 // 字符串限制长度函数
 export function stringLength (min, max, message) {
   return {min, max, message: message || `最多输入${max}位字符`, trigger: ['blur', 'change']}
@@ -76,6 +79,18 @@ function idCard (rule, value, callback) {
 function money (rule, value, callback) {
   if (value && (!(/^[0-9]+(.[0-9]{0,2})?$/).test(value))) {
     callback(new Error('请输入最多两位小数的数值'))
+  } else {
+    callback()
+  }
+}
+
+// 验证密码
+function password (rule, value, callback) {
+  if (value.length < 8) {
+    callback(new Error('密码格式错误，密码长度至少8位'))
+  }
+  if (value && (!(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*.,;'()])[\da-zA-Z~!@#$%^&*]{8,}$/g.test(value)))) {
+    callback(new Error('密码格式错误，密码需要含有数字&字母&特殊字符'))
   } else {
     callback()
   }

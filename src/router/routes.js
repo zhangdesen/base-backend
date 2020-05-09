@@ -28,6 +28,15 @@ const routes = [
       keepAlive: true
     }
   },
+  {
+    path: '/resetPassword',
+    component: resolve => require(['@/pages/ResetPassword'], resolve),
+    name: 'ResetPassword',
+    meta: {
+      title: '修改密码',
+      keepAlive: true
+    }
+  },
   ...demo,
   {
     path: '*',
