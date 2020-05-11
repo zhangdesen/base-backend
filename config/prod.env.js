@@ -2,6 +2,7 @@
 // 正式环境项目构建配置
 module.exports = {
   NODE_ENV: '"production"',
+  mode: '"production"',
   BUILD_ENV: '"release"',
   API_HOST_LIST: {
     // api接口请求地址host配置
