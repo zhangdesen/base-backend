@@ -13,6 +13,8 @@ const FORM = 'form' // 表单对象默认值
 
 // 获取表格高度
 function getTableHeight () {
+  let heigth = 44
+  if (window.top !== window.self) heigth = 14
   const documentHeight = document.body.clientHeight
   const searchFormEle = document.getElementById('searchForm')
   const elHeaderEle = document.getElementsByClassName('el-header')[0]
@@ -22,7 +24,7 @@ function getTableHeight () {
   let paginationHeight = paginationEle ? paginationEle.offsetHeight : 0
   let actionBtnHeight = actionBtnEle ? actionBtnEle.offsetHeight : 0
   let elHeaderHeight = elHeaderEle ? elHeaderEle.offsetHeight : 0
-  return documentHeight - (searchFormHeight + elHeaderHeight + paginationHeight + actionBtnHeight + 44)
+  return documentHeight - (searchFormHeight + elHeaderHeight + paginationHeight + actionBtnHeight + heigth)
 }
 
 function setUpdateObj (state, obj) {
