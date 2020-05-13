@@ -163,6 +163,7 @@
           :small="small"
           :namespace="namespace"
           :formNamespace="formNamespace"
+          :showBcrumb="false"
         ></table-wrapper>
         <!--自定义渲染-->
         <div v-else-if="item.type === 'render'">

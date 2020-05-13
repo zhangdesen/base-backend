@@ -9,6 +9,33 @@ const demo = [
     }
   },
   {
+    path: '/ops/merchant/create',
+    name: 'MerchantCreate',
+    component: resolve => require(['@/pages/demo/merchant/children/create'], resolve),
+    meta: {
+      title: '创建商户',
+      keepAlive: true
+    }
+  },
+  {
+    path: '/ops/merchant/see',
+    name: 'MerchantSee',
+    component: resolve => require(['@/pages/demo/merchant/children/see'], resolve),
+    meta: {
+      title: '查看商户',
+      keepAlive: true
+    }
+  },
+  {
+    path: '/ops/merchant/edit',
+    name: 'MerchantEdit',
+    component: resolve => require(['@/pages/demo/merchant/children/edit'], resolve),
+    meta: {
+      title: '编辑商户',
+      keepAlive: true
+    }
+  },
+  {
     path: '/ops/city',
     name: 'City',
     component: resolve => require(['@/pages/demo/city'], resolve),
@@ -57,33 +84,6 @@ const demo = [
         'quark:brand:delete',
         'quark:spu:cleanCache'
       ]
-    }
-  },
-  {
-    path: '/ops/merchant/create',
-    name: 'MerchantCreate',
-    component: resolve => require(['@/pages/demo/merchant/children/create'], resolve),
-    meta: {
-      title: '创建商户',
-      keepAlive: true
-    }
-  },
-  {
-    path: '/ops/merchant/see',
-    name: 'MerchantSee',
-    component: resolve => require(['@/pages/demo/merchant/children/see'], resolve),
-    meta: {
-      title: '查看商户',
-      keepAlive: true
-    }
-  },
-  {
-    path: '/ops/merchant/edit',
-    name: 'MerchantEdit',
-    component: resolve => require(['@/pages/demo/merchant/children/edit'], resolve),
-    meta: {
-      title: '编辑商户',
-      keepAlive: true
     }
   }
 ]

@@ -34,13 +34,6 @@ export function responseSuccessFunc (responseObj) {
   switch (code) {
     case 0: // 如果业务成功，直接进成功回调
       return resData
-    case 1001:
-      // 如果业务失败，根据不同 code 做不同处理
-      // 授权过期或未授权跳登录
-      // 特定弹窗
-      // 跳转特定页面...  location.href = xxx
-      // 如果情况够多，也可以有一个专门的handleError来处理
-      return
     case 302:
       Message({
         message: resData.message,

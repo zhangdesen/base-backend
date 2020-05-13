@@ -33,6 +33,8 @@ routerInstance.beforeEach(routerBeforeEachFunc)
 
 routerInstance.afterEach(routerAfterEachFunc)
 
+window.router = routerInstance // 为了面包屑效果绑定到window
+
 export default routerInstance
 
 // 异步组件

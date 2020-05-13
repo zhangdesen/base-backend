@@ -35,6 +35,10 @@ function routeNext (to, from, next) {
   if (meta.keepAlive !== false) {
     store.commit('addCachePage', to.name)
   }
+  // 外部系统
+  if (to && to.path === '/iframe') {
+    store.commit('addIframe', to.query)
+  }
   next()
 }
 
@@ -71,10 +75,10 @@ export function routerAfterEachFunc (to, from) {
 // 重写下push方法，以便兼容iframe页面
 const routerPush = Router.prototype.push
 export function rewriteRouterPushFunc (data) {
-  if (typeof data === 'object' && data.path === '/iframe') {
-    store.commit('addIframe', data.query.url)
-  }
   if (window.top !== window.self) {
+    // 点击面包屑直接跳转
+    if (data.path === '/') return window.parent.router.push('/')
+    if (data.query && data.query.breadcrumb) return window.parent.router.push(data.path)
     data.query = {
       ...data.query,
       parentStore: this.currentRoute.fullPath,

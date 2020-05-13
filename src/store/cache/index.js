@@ -23,9 +23,9 @@ const cache = {
       }
     },
 
-    addIframe (state, url) {
-      if (!(state.iframeArr.some(item => item.url === url))) {
-        state.iframeArr.push({url, id: state.id++})
+    addIframe (state, obj) {
+      if (!(state.iframeArr.some(item => item.url === obj.url))) {
+        state.iframeArr.push({...obj, id: state.id++})
       }
     },
 

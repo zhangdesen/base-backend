@@ -1,5 +1,6 @@
 <template>
   <div class="form-edit complex-form">
+    <quarkBreadcrumb :data="breadcrumbList" v-if="showBcrumb"></quarkBreadcrumb>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="right" @submit.native.prevent :style="{width: width}">
       <template v-if="isChildren">
         <div v-for="itemParent in formFields" :key="itemParent.prop">
@@ -81,6 +82,10 @@ export default {
     formConfirmFun: {
       type: String,
       default: 'complexFormConfirm'
+    },
+    showBcrumb: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -106,6 +111,9 @@ export default {
     },
     editType () {
       return this.getStoreData('editType')
+    },
+    breadcrumbList () {
+      return this.$store.state[this.namespace].breadcrumbList
     }
   },
   methods: {

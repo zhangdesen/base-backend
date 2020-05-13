@@ -20,7 +20,7 @@ const iframe = {
       if (Array.isArray(args)) { // 兼容接收消息过来是数组
         args = args[0]
       }
-      this.$store.commit('addIframe', args.url)
+      // this.$store.commit('addIframe', args.url)
       this.$router.push({
         path: '/iframe',
         query: {

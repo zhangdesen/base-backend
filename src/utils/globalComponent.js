@@ -13,9 +13,10 @@ import quarkCheckBox from '@/components/base/checkbox'
 import quarkTree from '@/components/base/tree'
 import quarkUpload from '@/components/base/upload'
 import quarkButton from '@/components/base/button'
+import quarkBreadcrumb from '@/components/base/breadcrumb'
 
 let components = {
-  // 对Element-UI的部分组件在进行一层封装
+  // 对elementui的部分组件在进行一层封装
   quarkInput,
   quarkSelect,
   quarkCascader,
@@ -27,7 +28,8 @@ let components = {
   quarkCheckBox,
   quarkTree,
   quarkUpload,
-  quarkButton
+  quarkButton,
+  quarkBreadcrumb
 }
 
 Object.keys(components).forEach(key => {

@@ -26,12 +26,16 @@ const registerModule = {
     querySearch (searchFields) {
       this.$store.commit(`${this.namespace}/querySearch`, searchFields)
     },
+    setBreadcrumb (obj) {
+      this.$store.commit(`${this.namespace}/setBreadcrumb`, obj)
+    },
     setNamespace () {
       this.namespace = this.store.namespace ? this.store.namespace : this.$route.fullPath
     }
   },
   activated () {
     this.setTableHeight()
+    // this.setBreadcrumb(this.$route)
   },
   created () {
     if (!this.store) return console.error('请先设置store')
@@ -41,6 +45,7 @@ const registerModule = {
       window.store = this.$store
     }
     this.setTableHeight()
+    this.setBreadcrumb(this.$route)
   },
   destroyed () {
     // 页面离开删除store

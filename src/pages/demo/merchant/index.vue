@@ -1,9 +1,9 @@
 <template>
   <Table-wrapper
-      :dataFields="dataFields"
-      :searchFields="searchFields"
-      :namespace="namespace"
-    ></Table-wrapper>
+    :dataFields="dataFields"
+    :searchFields="searchFields"
+    :namespace="namespace"
+  ></Table-wrapper>
 </template>
 <script>
 import searchFields from './searchFields'

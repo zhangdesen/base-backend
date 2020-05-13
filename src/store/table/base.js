@@ -8,6 +8,7 @@ import router from '@/router'
 import { initDate, param2Obj } from '@/utils/fun'
 import { Message, MessageBox } from 'element-ui'
 import Vue from 'vue'
+import qs from 'qs'
 
 const FORM = 'form' // 表单对象默认值
 
@@ -90,7 +91,8 @@ const base = {
     },
     tableDataSource: [], // 表格数据
     tableHeight: 200, // 表格高度
-    searchObject: {} // 搜索数据
+    searchObject: {}, // 搜索数据
+    breadcrumbList: [{path: '/', name: '首页'}] // 面包屑数据,默认都有首页
   },
   mutations: {
     // 初始化加载资源
@@ -413,6 +415,43 @@ const base = {
           arguments: []
         }, '*')
       }
+    },
+    // 设置面包屑
+    setBreadcrumb (state, obj) {
+      // iframe页面面包屑
+      if (this.state.common.externalSearch) {
+        const iframeArr = window.parent.store.state.cache.iframeArr
+        const iframeObj = iframeArr.find((item) => {
+          return item.url === location.href
+        })
+        const { title, url } = iframeObj
+        let query = param2Obj(url)
+        const { parentStore, parentId } = query
+        query.title = title
+        query.url = url // iframe跳转链接
+        const searchParams = qs.stringify(query)
+        query.breadcrumb = true
+        if (parentStore) {
+          state.breadcrumbList = JSON.parse(JSON.stringify(window.parent.frames[`iframe_${parentId}`].store.state[parentStore].breadcrumbList))
+          return state.breadcrumbList.push({name: title || obj.meta.title, path: `/iframe?${searchParams}`, query: query})
+        } else {
+          return state.breadcrumbList.push({name: title || obj.meta.title, path: `/iframe?${searchParams}`, query: query})
+        }
+      }
+      const { path, meta, query } = obj
+      const parentStore = query.parentStore
+      // 顶层页面有存进去不在更新
+      if (state.breadcrumbList.find((item) => {
+        return item.path === path
+      })) {
+        return
+      }
+      // 子级页面每次都更新面包屑，从父级页面获取面包屑，再把当前push进去
+      if (parentStore) {
+        state.breadcrumbList = (this.state[parentStore] && JSON.parse(JSON.stringify(this.state[parentStore].breadcrumbList))) || state.breadcrumbList
+        return state.breadcrumbList.push({name: query.title || meta.title, path, query})
+      }
+      state.breadcrumbList.push({name: query.title || meta.title, path, query})
     }
   },
   actions: {

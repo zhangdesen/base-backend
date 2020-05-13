@@ -93,7 +93,7 @@ export default {
         })
         .catch(() => {})
     },
-    tabClick (data) {
+    tabClick () {
       let path = this.currentPath
       this.$router.push({
         path: path

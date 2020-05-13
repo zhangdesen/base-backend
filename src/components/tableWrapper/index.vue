@@ -1,5 +1,6 @@
 <template>
   <div class="table-wrapper" id="tableWrapper">
+    <quarkBreadcrumb :data="breadcrumbList" v-if="showBcrumb"></quarkBreadcrumb>
     <Search :searchFields="searchFields" :namespace="namespace" :formNamespace="formNamespace" :showSearch="showSearch"></Search>
     <Action
       :showAction="showAction"
@@ -108,6 +109,15 @@ export default {
     },
     formNamespace: {
       type: String
+    },
+    showBcrumb: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    breadcrumbList () {
+      return this.$store.state[this.namespace].breadcrumbList
     }
   }
 }

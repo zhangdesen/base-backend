@@ -19,7 +19,7 @@
               <router-view :key="$route.fullPath.split('#')[0]"></router-view>
             </keep-alive>
           </transition> -->
-          <iframe width="100%" height="100%" frameborder="0" scrolling="auto" :src="item.url" v-for="item in iframeArr" :key="item.id" v-show="$route.query.url === item.url" :name="'iframe_' + item.id" :data-id="item.id" :data-master-id="param2Obj(item.url).parentId"></iframe>
+          <iframe width="100%" height="100%" frameborder="0" scrolling="auto" :src="item.url" v-for="item in iframeArr" :key="item.id" v-show="$route.query.url === item.url" :name="'iframe_' + item.id" :data-id="item.id" :data-master-id="param2Obj(item.url).parentId" :data-title="item.title"></iframe>
         </el-main>
       </el-container>
     </el-container>
