@@ -11,7 +11,7 @@
             :namespace="namespace"
             :formNamespace="formNamespace"
             :formFields="itemParent.children">
-            <template :slot="item.prop" v-for="item in formFields">
+            <template :slot="item.prop" v-for="item in itemParent.children">
               <slot :name="item.prop"></slot>
             </template>
           </formItem>
