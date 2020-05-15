@@ -45,7 +45,7 @@ const registerModule = {
       window.store = this.$store
     }
     this.setTableHeight()
-    this.setBreadcrumb(this.$route)
+    // this.setBreadcrumb(this.$route)
   },
   destroyed () {
     // 页面离开删除store

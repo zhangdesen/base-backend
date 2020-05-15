@@ -48,7 +48,7 @@
     }
   }
   .el-textarea, .el-textarea__inner{
-    width: 350px;
+    min-width: 350px;
     min-height: 64px;
   }
   .el-pagination--small .el-pagination__editor.el-input .el-input__inner, .el-pagination__sizes .el-input .el-input__inner, .el-pagination{
@@ -155,6 +155,15 @@
 .el-table th.is-leaf, .el-table td{
   line-height: 1;
 }
+
+.el-table th > .cell{
+  color: $--color-text-primary;
+  font-weight: bold;
+}
+.el-table thead tr, .el-table thead th{
+  background-color: #EBEEF5;
+}
+
 
 //自定义表格的样式
 .colspanTable {

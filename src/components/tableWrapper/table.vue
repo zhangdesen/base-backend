@@ -104,6 +104,7 @@
           :align="column.align ? column.align : 'left'"
           v-if="column.prop === 'action' && column.show !== false"
           :key="column.prop + index"
+          :fixed="column.fixed"
           :width="column.width"
           :label="column.label || '操作'"
           :render-header="column.renderHeader"
