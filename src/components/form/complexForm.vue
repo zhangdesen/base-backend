@@ -131,8 +131,8 @@ export default {
           this.$store.dispatch(`${this.namespace}/${this.formConfirmFun}`, {formNamespace: this.formNamespace, fullPath: this.$route.fullPath, parentStore: this.$route.query.parentStore, parentId: this.$route.query.parentId, url: this.$route.query.url})
         } else {
           this.$nextTick(() => {
-            const firstError = document.getElementsByClassName('el-form-item__error')[0].parentNode // 获取定位的节点
-            document.getElementsByClassName('el-main')[0].scrollTo(0, firstError.offsetTop - 90)
+            const firstError = document.getElementsByClassName('is-error')[0] // 获取第一个错误的节点
+            document.getElementsByClassName('el-main')[0].scrollTo(0, firstError.offsetTop - 140)
           })
           return false
         }
