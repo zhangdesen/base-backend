@@ -4,17 +4,20 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="right" @submit.native.prevent :style="{width: width}">
       <template v-if="isChildren">
         <div v-for="itemParent in formFields" :key="itemParent.prop">
-        <span class="title" :key="itemParent.title" :id="itemParent.id" v-if="itemParent.title">{{itemParent.title}}</span>
-        <div class="item-container">
-          <formItem
-            :labelWidth="labelWidth"
-            :namespace="namespace"
-            :formNamespace="formNamespace"
-            :formFields="itemParent.children">
-            <template :slot="item.prop" v-for="item in itemParent.children">
-              <slot :name="item.prop"></slot>
-            </template>
-          </formItem>
+          <template v-if="itemParent.show !== false">
+             <span class="title" :key="itemParent.title" :id="itemParent.id" v-if="itemParent.title">{{itemParent.title}}</span>
+             <div class="item-container">
+                <formItem
+                  :labelWidth="labelWidth"
+                  :namespace="namespace"
+                  :formNamespace="formNamespace"
+                  :formFields="itemParent.children">
+                  <template :slot="item.prop" v-for="item in itemParent.children">
+                    <slot :name="item.prop"></slot>
+                  </template>
+               </formItem>
+            </div>
+          </template>
         </div>
       </div>
       </template>
