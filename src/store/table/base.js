@@ -392,7 +392,7 @@ const base = {
       }
       data.query = {
         ...data.query,
-        parentId: param2Obj(location.href).parentId || window.name.split('_')[1] || null, // 对应的iframe的name值id
+        parentId: param2Obj(location.href).parentId || window.name.split('_')[1] || 'null', // 对应的iframe的name值id
         parentStore: router.currentRoute.fullPath // 识别父页面是哪个，子页面可根据parentStore的值调用父页面的方法
       }
       router.push(data)
