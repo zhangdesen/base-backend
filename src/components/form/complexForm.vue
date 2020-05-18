@@ -19,7 +19,6 @@
             </div>
           </template>
         </div>
-      </div>
       </template>
       <formItem
         v-else

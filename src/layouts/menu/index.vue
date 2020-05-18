@@ -230,7 +230,8 @@ export default {
   }
 }
 .foot {
-  position: fixed;
+  position: absolute;
+  left: 0;
   bottom: 0;
   padding: 8px 0;
   text-align: center;
