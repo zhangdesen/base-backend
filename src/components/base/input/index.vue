@@ -63,7 +63,7 @@ export default {
       type: Object,
       default () {
         return {
-          minRows: 2, maxRows: 6
+          minRows: 3, maxRows: 6
         }
       }
     }
