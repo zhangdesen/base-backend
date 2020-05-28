@@ -2,7 +2,7 @@
   <div>
     <el-menu-item v-if="itemData.subMenus == null" :index="itemData.url">
       <span v-if="itemData.icon" :class="['fa', itemData.icon, 'fa-ls']"></span>
-      <span> {{ itemData.name }}</span>
+      <div class="name"> {{ itemData.name }}</div>
     </el-menu-item>
     <el-submenu v-if="itemData.subMenus != null" :index="itemData.name">
       <template slot="title">
@@ -35,4 +35,11 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 134px;
+}
+</style>
