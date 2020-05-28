@@ -117,7 +117,8 @@ export default {
     }
   },
   created () {
-    if (!(this.permissionList.every(elem => this.$store.state.permission[this.$route.fullPath].indexOf(elem) > -1))) {
+    const currentPermissionList = this.$store.state.permission[this.$route.fullPath] || []
+    if (!(this.permissionList.every(elem => currentPermissionList.indexOf(elem) > -1))) {
       this.isPermission = true
     }
   }
