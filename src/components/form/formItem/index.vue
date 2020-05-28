@@ -10,7 +10,7 @@
        >
       <template slot="label">
          <component v-if="item.labelRender" v-bind:is="item.labelRender"></component>
-         <span v-else>{{item.label ? item.label + '：' : ''}}</span>
+         <span class="mr8" v-else>{{item.label ? item.label + '：' : ''}}</span>
       </template>
       <slot :name="item.prop">
         <!--输入框-->
@@ -222,7 +222,7 @@ export default {
   props: {
     labelWidth: {
       type: String,
-      default: '120px'
+      default: '114px'
     },
     maxHeight: {
       type: String
@@ -323,5 +323,12 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
   overflow: auto;
+}
+.mr8{
+  margin-right: 8px;
+  line-height: 20px;
+  display: inline-block;
+  word-break: keep-all;
+  width: min-content;
 }
 </style>

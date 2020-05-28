@@ -8,7 +8,6 @@
              <span class="title" :key="itemParent.title" :id="itemParent.id" v-if="itemParent.title">{{itemParent.title}}</span>
              <div class="item-container">
                 <formItem
-                  :labelWidth="labelWidth"
                   :namespace="namespace"
                   :formNamespace="formNamespace"
                   :formFields="itemParent.children">
@@ -22,7 +21,6 @@
       </template>
       <formItem
         v-else
-        :labelWidth="labelWidth"
         :namespace="namespace"
         :formNamespace="formNamespace"
         :formFields="formFields">
@@ -51,15 +49,11 @@ export default {
   props: {
     width: {
       type: String,
-      default: '600px'
+      default: '500px'
     },
     formFields: {
       type: Array,
       required: true
-    },
-    labelWidth: {
-      type: String,
-      default: '140px'
     },
     confirmBtnText: {
       type: String,
