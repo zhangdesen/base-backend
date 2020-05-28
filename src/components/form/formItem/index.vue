@@ -10,7 +10,7 @@
        >
       <template slot="label">
          <component v-if="item.labelRender" v-bind:is="item.labelRender"></component>
-         <span class="mr8" v-else>{{item.label ? item.label + '：' : ''}}</span>
+         <span class="mr8" v-else-if="item.label">{{item.label}}</span>
       </template>
       <slot :name="item.prop">
         <!--输入框-->
