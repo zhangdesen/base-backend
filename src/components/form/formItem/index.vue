@@ -6,7 +6,7 @@
         :key="item.prop"
         v-if="item.show !== false ? (editType === 'edit' ? item.editShow !== false : editType === 'see' ? item.seeShow !== false : editType === 'create' ? item.createShow !== false : true) : false"
         :prop="item.prop"
-        :label-width="item.label ? labelWidth : '0px'"
+        :label-width="item.label ? labelWidth : item.labelWidth ? item.labelWidth : '0px'"
        >
       <template slot="label">
          <component v-if="item.labelRender" v-bind:is="item.labelRender"></component>
