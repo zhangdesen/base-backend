@@ -130,6 +130,12 @@
 export default {
   name: 'Table',
   props: {
+    data: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     dataFields: {
       type: Array
     },
@@ -186,7 +192,7 @@ export default {
       return this.getStoreData('rowKey')
     },
     tableDataSource () {
-      return this.getStoreData('tableDataSource')
+      return this.data.length ? this.data : this.getStoreData('tableDataSource')
     },
     loading () {
       return this.getStoreData('loading')

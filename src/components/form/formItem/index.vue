@@ -141,6 +141,7 @@
         ></quarkUpload>
         <!-- table-->
         <quarkTable
+          :data="selectSource[item.source]"
           v-else-if="item.type === 'table'"
           :width="item.width"
           :dataFields="item.dataFields"
