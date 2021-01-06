@@ -16,7 +16,7 @@
     "buildpage": "node build/build.js release buildpage"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "element-ui": "^2.13.0",
     "font-awesome": "^4.7.0",
     "jsencrypt": "^3.0.0-rc.1",
